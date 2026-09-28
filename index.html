@@ -1,274 +1,351 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Zhi Zuo</title>
-        <meta name="author" content="Zhi Zuo">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="images/favicon/kitty.png" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="stylesheet.css">
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
-          body {
-            font-family: 'Oxanium', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
-            color: #333;
-            text-align: center;
-          }
-          .container {
-            max-width: 800px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-          }
-          .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-top: 20px;
-          }
-          .name {
-            font-size: 28px;
-            font-weight: bold;
-            color: #007bff;
-          }
-          .info {
-            font-size: 18px;
-            color: #555;
-            margin: 10px 0;
-          }
-          .links a {
-            text-decoration: none;
-            color: #007bff;
-            margin: 0 10px;
-            font-weight: bold;
-          }
-          .section {
-            text-align: left;
-            margin-top: 20px;
-          }
-          .section h2 {
-            color: #0056b3;
-          }
-          .paper {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 15px;
-          }
-          .paper img {
-            width: 100px;
-            border-radius: 10px;
-            margin-right: 15px;
-          }
-        </style>
-      </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Zhi Zuo">
+  <meta name="description" content="Zhi Zuo's academic homepage. Research in 3D/4D vision, generation, reconstruction, and representation learning.">
+  <meta name="theme-color" content="#F5F5F5">
+  <title>Zhi Zuo</title>
+  <link rel="icon" type="image/png" href="images/favicon/kitty.png">
+  <style>
+    /* Layout, colors, type scale, and paper cards follow the supplied reference. */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 74px; }
+    html, body { margin: 0; padding: 0; min-height: 100%; background: #DAE8FC; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; }
+    body { color: #333; line-height: 1.65; }
+    [hidden] { display: none !important; }
+    a { color: #005fc5; text-underline-offset: 3px; }
+    a:hover { color: #00458f; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #376b98; outline-offset: 4px; }
+    button { font: inherit; cursor: pointer; }
+    .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .skip-link { position: fixed; top: -80px; left: 12px; padding: 8px 14px; z-index: 3000; background: #fff; }
+    .skip-link:focus { top: 7px; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #F5F5F5; color: #333; height: 54px; display: flex; align-items: center; border-bottom: 1px solid #ccc; font-size: 1.05em; justify-content: center; }
+    .nav-list { display: flex; align-items: center; gap: 18px; }
+    .nav-link { text-decoration: none; color: #444; padding: 3px 16px; border-radius: 5px; white-space: nowrap; }
+    .nav-link[aria-current="location"], .nav-link:hover { background: #d8d8d8; color: #000; }
+    .menu-toggle { display: none; background: none; color: #333; font-size: 1.65rem; line-height: 1; border: none; padding: 7px; width: 42px; height: 42px; margin-left: auto; }
+    .mobile-menu { position: fixed; top: 62px; right: 10px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; min-width: 180px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.2); padding: 12px 16px; border-radius: 10px; }
+    .mobile-menu a { padding: 8px; color: #333; text-decoration: none; border-radius: 6px; }
+    .mobile-menu a:hover { background: #f0f0f0; }
+    .container { max-width: 1400px; margin: 54px auto 0; position: relative; }
+    .side-profile { position: fixed; left: calc(50% - 700px); top: 54px; width: 272px; height: calc(100vh - 54px); background: #F5F5F5; box-shadow: 2px 0 6px rgba(0,0,0,.05); padding: 24px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 999; overflow-y: auto; }
+    .avatar { position: relative; width: 100px; height: 100px; border-radius: 50%; overflow: hidden; flex-shrink: 0; margin-bottom: 10px; background: #e4e4e4; }
+    .avatar-fallback { position: absolute; inset: 0; display: grid; place-items: center; color: #777; font-size: 30px; }
+    .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #eee; }
+    .side-profile h2 { font-size: 1.1rem; margin: 6px 0; color: #222; }
+    .profile-location, .profile-field { color: #666; font-size: .9rem; margin: 3px 0; }
+    .profile-icon-links { margin-top: 14px; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    .profile-icon-links a { display: inline-flex; align-items: center; gap: 7px; font-size: 1rem; color: #444; text-decoration: none; }
+    .profile-icon-links a:hover { color: #1DA98C; }
+    .main-content { margin-left: 272px; padding: 48px 64px 24px; background: #F5F5F5; min-height: calc(100vh - 54px); }
+    section { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.03); padding: 10px 48px 22px; margin-bottom: 10px; }
+    .section-title { border-left: 4px solid #666; padding-left: 14px; color: #333; margin: 20px 0 24px; font-size: 1.6rem; line-height: 1.35; font-weight: 700; }
+    section p { margin: 0 0 16px; }
+    section p:last-child { margin-bottom: 0; }
+    .news-list { padding-left: 22px; margin: 0 0 3px; }
+    .news-list li { padding-left: 2px; }
+    .news-label { color: #eb507e; font-weight: 600; }
+    .contribution-note { margin: 0; }
+    .publication-legend { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 12px 0 0; }
+    .publication-legend .tag { font-size: .85rem; margin: 0; }
+    .pub-year-group { margin-top: 30px; }
+    .pub-year { display: flex; align-items: center; gap: 16px; color: #555; font-size: 1.25rem; line-height: 1.5; margin: 0; font-weight: 600; }
+    .pub-year::after { content: ''; height: 1px; flex: 1; background: #ddd; }
+    .pub-year-group .pub-item:first-child { margin-top: 18px; }
+    .pub-list { list-style: none; padding: 0; margin: 0; }
+    .pub-item { display: flex; gap: 30px; margin-top: 28px; background: #f7f8f9; border-radius: 12px; box-shadow: 0 1px 6px #ccc4; padding: 24px; align-items: flex-start; }
+    .pub-img-box { width: 200px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid #ccc; border-radius: 10px; position: relative; overflow: hidden; }
+    .pub-img-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; border-radius: 6px; background: #fff; }
+    .image-fallback { color: #666; font-size: .95rem; padding: 12px; text-align: center; }
+    .pub-info { flex: 1; min-width: 0; }
+    .pub-info h4 { font-size: 1.125rem; font-weight: 700; margin: 0; line-height: 1.5; overflow-wrap: anywhere; }
+    .tags { margin: 10px 0; }
+    .tag { color: #333; padding: 3px 10px; border: 1px solid transparent; border-radius: 6px; margin-right: 8px; display: inline-block; font-size: .95rem; }
+    .tag-conference { background: #73c5b4; }
+    .tag-journal { background: #75c4f5; }
+    .tag-review { background: #e5e7eb; color: #4b5563; }
+    .tag-unconfirmed { background: #fff; border-color: #ccc; color: #555; }
+    .pub-meta, .authors { font-size: 1rem; }
+    .pub-meta .authors { margin: 0 0 8px; }
+    .pub-description { margin: 0 0 8px; line-height: 1.6; }
+    .pub-links { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 10px; }
+    .btn { background: #00AB37; color: #fff; padding: 2px 12px; border-radius: 5px; text-decoration: none; font-size: .93rem; display: inline-block; }
+    .btn:hover { background: #008d2d; color: #fff; }
+    .edu-list { list-style: none; padding: 0; margin: 0; }
+    .edu-item { display: flex; gap: 12px; align-items: flex-start; }
+    .edu-icon { margin-top: 3px; color: #666; }
+    .edu-icon .icon { width: 21px; height: 21px; }
+    .edu-main small { color: #666; font-size: .9rem; }
+    .interests { color: #555; }
+    .site-footer { color: #666; text-align: center; font-size: .85rem; padding: 14px 0 0; }
+    /* Keep the reference's stacked layout at 1400px and below. */
+    @media (max-width: 1400px) {
+      .side-profile { position: relative; left: auto; top: auto; width: 100%; height: auto; padding: 20px 10px; box-shadow: none; border-bottom: 1px solid #ccc; z-index: auto; }
+      .avatar { width: 80px; height: 80px; }
+      .side-profile h2 { font-size: 1rem; }
+      .profile-location { font-size: 1rem; }
+      .main-content { margin-left: 0; padding: 20px; min-height: 0; }
+      .pub-item { flex-direction: column; align-items: center; }
+      .pub-img-box { margin-bottom: 14px; width: 100%; max-width: 320px; }
+      .pub-info { width: 100%; text-align: center; }
+      .pub-links { justify-content: center; }
+    }
+    @media (max-width: 950px) {
+      .navbar { justify-content: space-between; padding: 0 16px; }
+      .nav-list { gap: 8px; }
+      .nav-link { padding-left: 10px; padding-right: 10px; }
+      .js .hide-on-small { display: none; }
+      .js .menu-toggle { display: block; }
+      html:not(.js) .nav-list { overflow-x: auto; }
+      section { padding-left: 32px; padding-right: 32px; }
+    }
+    @media (max-width: 600px) {
+      .navbar { padding: 0 10px; font-size: .9rem; }
+      .nav-list { gap: 3px; }
+      .nav-link { padding: 5px 8px; }
+      .menu-toggle { flex-shrink: 0; width: 36px; font-size: 1.5rem; }
+      .main-content { padding: 14px 10px; }
+      section { padding: 8px 20px 22px; }
+      .section-title { font-size: 1.4rem; margin-bottom: 20px; }
+      .pub-item { padding: 18px 14px; gap: 14px; margin-top: 22px; }
+      .pub-img-box { margin-bottom: 0; }
+      .pub-info h4 { font-size: 1.08rem; }
+      .pub-meta, .authors, .pub-description { font-size: .95rem; }
+      .tag { font-size: .9rem; margin-right: 0; }
+      .profile-icon-links { flex-direction: row; gap: 20px; justify-content: center; flex-wrap: wrap; }
+      .profile-icon-links a { font-size: .95rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      html, body { background: #fff; }
+      .navbar, .mobile-menu, .skip-link { display: none !important; }
+      .container { margin: 0; }
+      .side-profile { position: static; width: auto; height: auto; box-shadow: none; padding: 0 0 20px; }
+      .profile-icon-links { flex-direction: row; gap: 16px; }
+      .main-content { margin: 0; padding: 0; background: #fff; }
+      section { box-shadow: none; padding: 10px 0; }
+      .pub-item { break-inside: avoid; flex-direction: row; box-shadow: none; padding: 18px 0; }
+      .pub-img-box { width: 170px; height: 110px; }
+      .pub-info { text-align: left; }
+      .pub-links { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+      <symbol id="icon-document" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.3-4.3-2-6-2.5M15 22v-3.4c0-1 .1-1.4-.5-2 3.2-.4 6.5-1.5 6.5-7A5.5 5.5 0 0 0 19.5 6a5.1 5.1 0 0 0-.1-3.6S18.2 2 15.7 3.8a13.4 13.4 0 0 0-7.4 0C5.8 2 4.6 2.4 4.6 2.4A5.1 5.1 0 0 0 4.5 6 5.5 5.5 0 0 0 3 9.6c0 5.5 3.3 6.6 6.5 7-.5.5-.6 1.1-.5 2V22"/></symbol>
+      <symbol id="icon-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5Z M6 11v6c4 3 8 3 12 0v-6M22 9v7"/></symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 2v4M18 4h4"/></symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    </defs>
+  </svg>
+  <header class="navbar">
+    <nav class="nav-list" aria-label="Main navigation">
+      <a class="nav-link" href="#about" aria-current="location">About Me</a>
+      <a class="nav-link" href="#news">News</a>
+      <a class="nav-link" href="#publication">Publications</a>
+      <a class="nav-link hide-on-small" href="#education">Education</a>
+      <a class="nav-link hide-on-small" href="#more">What's More?</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open more navigation links">☰</button>
+  </header>
+  <nav id="mobile-menu" class="mobile-menu" aria-label="More navigation" hidden>
+    <a href="#education">Education</a>
+    <a href="#more">What's More?</a>
+  </nav>
+  <div class="container">
+    <aside class="side-profile" aria-label="Personal profile">
+      <div class="avatar"><span class="avatar-fallback" aria-hidden="true">ZZ</span><img src="Image/Hompage.jpg" alt="Zhi Zuo" width="100" height="100" fetchpriority="high"></div>
+      <h2>Zhi Zuo</h2>
+      <p class="profile-location">Master's student · NUAA</p>
+      <p class="profile-field">3D / 4D Vision</p>
+      <div class="profile-icon-links">
+        <a href="mailto:zuozhi@nuaa.edu.cn" title="zuozhi@nuaa.edu.cn"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg><span>Email</span></a>
+        <a href="https://github.com/occlete" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg><span>GitHub</span></a>
+        <!-- Original CV path retained. Please confirm that this file is your CV. -->
+        <a href="data/Chenyi_CV.pdf" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg><span>CV</span></a>
+      </div>
+    </aside>
+    <main class="main-content" id="main-content">
+      <section id="about" aria-labelledby="about-title">
+        <h1 class="section-title" id="about-title">About Me</h1>
+        <p>I am a master's student in Computer Science and Technology at Nanjing University of Aeronautics and Astronautics (2023–2026), advised by Prof. Pan Gao at the Immersive and Interactive Multimedia Lab (<a href="https://i2-multimedia-lab.github.io" target="_blank" rel="noopener noreferrer">I2ML</a>).</p>
+        <p>My current research interests are 3D vision tasks, especially 3D/4D generation, reconstruction, and understanding. I am also interested in learning representations.</p>
+      </section>
+      <section id="news" aria-labelledby="news-title">
+        <h2 class="section-title" id="news-title">News</h2>
+        <!-- Time-sensitive application statement retained from the original homepage. -->
+        <ul class="news-list"><li><span class="news-label">PhD Application:</span> I am applying for PhD positions for Fall 2026. Feel free to <a href="mailto:zuozhi@nuaa.edu.cn">contact me</a>!</li></ul>
+      </section>
+      <section id="publication" aria-labelledby="publication-title">
+        <h2 class="section-title" id="publication-title">Publications</h2>
+        <p class="contribution-note">* denotes equal contribution.</p>
+        <div class="publication-legend" role="group" aria-label="Publication types">
+          <span class="tag tag-conference">Conference / Workshop</span>
+          <span class="tag tag-journal">Journal</span>
+          <span class="tag tag-review">Under Review</span>
+        </div>
+        
+        <div class="pub-year-group" role="group" aria-labelledby="publications-2026">
+          <h3 class="pub-year" id="publications-2026">2026</h3>
+          <ul class="pub-list">
+          <li class="pub-item">
+            <div class="pub-img-box">
+              <span class="image-fallback" aria-hidden="true">WonderVerse</span>
+              <img src="Image/Representative-1748054785888.jpg" alt="WonderVerse research overview" width="400" height="240" loading="lazy">
+            </div>
+            <article class="pub-info" aria-labelledby="paper-3">
+              <h4 id="paper-3">WonderVerse: Video Geometric Correction and Enhancement for Extendable 3D Scene Generation</h4>
+              <div class="tags"><span class="tag tag-unconfirmed" aria-label="Venue: CVM 2026">CVM 2026</span></div>
+              <div class="pub-meta">
+                <p class="authors">Hao Feng*, <strong>Zhi Zuo*</strong>, Jia-Hui Pan, Ka-Hei Hui, Yihua Shao, Qi Dou, Wei Xie, Jingyu Hu, Zhengzhe Liu</p>
+                <p class="pub-description">Video generative models for extendable 3D scene generation.</p>
+                <div class="pub-links"><a class="btn" href="https://arxiv.org/abs/2503.09160" target="_blank" rel="noopener noreferrer" aria-label="arXiv for WonderVerse: Video Geometric Correction and Enhancement for Extendable 3D Scene Generation">arXiv</a></div>
+              </div>
+            </article>
+          </li>
+          <li class="pub-item">
+            <div class="pub-img-box">
+              <span class="image-fallback" aria-hidden="true">Simba</span>
+              <img src="Image/simba.png" alt="Simba research overview" width="400" height="240" loading="lazy">
+            </div>
+            <article class="pub-info" aria-labelledby="paper-4">
+              <h4 id="paper-4">Simba: Towards High-Fidelity and Geometrically-Consistent Point Cloud Completion via Transformation Diffusion</h4>
+              <div class="tags"><span class="tag tag-conference" aria-label="Conference: AAAI 2026">AAAI 2026</span></div>
+              <div class="pub-meta">
+                <p class="authors">Lirui Zhang*, Zhengkai Zhao*, <strong>Zhi Zuo</strong>, Pan Gao, Jie Qin</p>
+                <p class="pub-description">Transformation diffusion for high-fidelity, geometrically consistent point cloud completion.</p>
+                
+              </div>
+            </article>
+          </li>
+          </ul>
+        </div>
+        <div class="pub-year-group" role="group" aria-labelledby="publications-undated">
+          <h3 class="pub-year" id="publications-undated">Year to be confirmed</h3>
+          <ul class="pub-list">
+          <li class="pub-item">
+            <div class="pub-img-box">
+              <span class="image-fallback" aria-hidden="true">PL²</span>
+              <img src="Image/PL2.jpg" alt="PL² research overview" width="400" height="240" loading="lazy">
+            </div>
+            <article class="pub-info" aria-labelledby="paper-1">
+              <h4 id="paper-1">Point Long-Term Locality-Aware Transformer for Point Cloud Video Understanding</h4>
+              <div class="tags"><span class="tag tag-conference" aria-label="Workshop: ACM MM Asia Workshops">ACM MM Asia Workshops</span></div>
+              <div class="pub-meta">
+                <p class="authors"><strong>Zhi Zuo</strong>, Pan Gao, Kang You, Wei Xiang, Jie Qin</p>
+                <p class="pub-description">An inter-frame motion module and long-term locality-aware attention for 4D action recognition and semantic segmentation.</p>
+                <div class="pub-links"><a class="btn" href="https://github.com/I2-Multimedia-Lab/PL2-Transformer" target="_blank" rel="noopener noreferrer" aria-label="Code for Point Long-Term Locality-Aware Transformer for Point Cloud Video Understanding">GitHub</a></div>
+              </div>
+            </article>
+          </li>
+          <li class="pub-item">
+            <div class="pub-img-box">
+              <span class="image-fallback" aria-hidden="true">Disco4D</span>
+              <img src="Image/Uni4D2.jpg" alt="Disco4D research overview" width="400" height="240" loading="lazy">
+            </div>
+            <article class="pub-info" aria-labelledby="paper-2">
+              <h4 id="paper-2">Disco4D: Towards Prior-Free Motion Representation Learning for Point Cloud Videos via Self-Disentangled Contrastive Pre-training</h4>
+              <div class="tags"><span class="tag tag-journal" aria-label="Journal: International Journal of Computer Vision">International Journal of Computer Vision</span></div>
+              <div class="pub-meta">
+                <p class="authors"><strong>Zhi Zuo*</strong>, Chenyi Zhuang*, Pan Gao, Jie Qin, Hao Feng, Nicu Sebe</p>
+                <p class="pub-description">A self-disentangled masked autoencoder that separates low- and high-level features using two token types to learn transferable motion representations for point cloud videos.</p>
+                <div class="pub-links"><a class="btn" href="https://arxiv.org/abs/2504.04837" target="_blank" rel="noopener noreferrer" aria-label="arXiv for Disco4D: Towards Prior-Free Motion Representation Learning for Point Cloud Videos via Self-Disentangled Contrastive Pre-training">arXiv</a></div>
+              </div>
+            </article>
+          </li>
+          </ul>
+        </div>
+        <div class="pub-year-group" role="group" aria-labelledby="publications-under-review">
+          <h3 class="pub-year" id="publications-under-review">Under Review</h3>
+          <ul class="pub-list">
+          <li class="pub-item">
+            <div class="pub-img-box">
+              <span class="image-fallback" aria-hidden="true">MvP</span>
+              <img src="Image/MVP.png" alt="MvP research overview" width="400" height="240" loading="lazy">
+            </div>
+            <article class="pub-info" aria-labelledby="paper-5">
+              <h4 id="paper-5">MvP: Learning Motion Prior for Diffusion-Based 3D Human Pose Estimation</h4>
+              <div class="tags"><span class="tag tag-review" aria-label="Under review: Under Review">Under Review</span></div>
+              <div class="pub-meta">
+                <p class="authors">Bing Han, Chenyi Zhuang, <strong>Zhi Zuo</strong>, Pan Gao, Nicu Sebe</p>
+                <p class="pub-description">Diffusion models for estimating 3D human poses from 2D images.</p>
+                
+              </div>
+            </article>
+          </li>
+          </ul>
+        </div>
+      </section>
+      <section id="education" aria-labelledby="education-title">
+        <h2 class="section-title" id="education-title">Education</h2>
+        <ul class="edu-list"><li class="edu-item"><span class="edu-icon" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-cap"></use></svg></span><div class="edu-main"><strong>Nanjing University of Aeronautics and Astronautics</strong> — Master's studies in Computer Science and Technology<br><small>2023–2026 · Advisor: Prof. Pan Gao</small></div></li></ul>
+      </section>
+      <section id="more" aria-labelledby="more-title">
+        <h2 class="section-title" id="more-title">What's More?</h2>
+        <p class="interests" lang="zh-CN">INTJ / 历史 / 天文 / 游戏 / 音乐</p>
+        <p><strong>“A believing heart is magic”</strong> and <strong>“Just Do It”</strong></p>
+      </section>
+      <footer class="site-footer">Last updated: <time datetime="2025-04-08">April 8, 2025</time></footer>
+    </main>
+  </div>
+  <script>
+    document.documentElement.classList.add('js');
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                    Zhi Zuo
-                </p>
-		<p style="text-align:center;color:#000000"> INTJ / 历史 / 天文 / 游戏 / 音乐 </p>
-                <p> I'm a second-year master's student in Computer Science and Tecnnology at the Nanjing University of Aeronautics and Astronautics (2023-2026), advised by Prof. Pan Gao at Immersive and Interactive Multimedia Lab (<a href="https://i2-multimedia-lab.github.io">I2ML</a>).
-<!-- 			I'm a research scientist at <a href="https://deepmind.google/">Google DeepMind</a> in San Francisco, where I lead a small team that mostly works on <a href="https://www.matthewtancik.com/nerf">NeRF</a>. -->
-                </p>
-                <p>
-                  My current research interests are 3D vision tasks, especially 3D/4D generation/reconstruction and 3D/4D understanding. I am also interested in learning representations.
-                </p>
-                <p> <span style="color:#eb507e">NEWS!</span> I am applying for PhD in Fall 2026, feel free to contact me ⬇
-<!--                   At Google I've worked on <a href="https://www.google.com/glass/start/">Glass</a>,  <a href="https://ai.googleblog.com/2014/04/lens-blur-in-new-google-camera-app.html">Lens Blur</a>, <a href="https://ai.googleblog.com/2014/10/hdr-low-light-and-high-dynamic-range.html">HDR+</a>, <a href="https://blog.google/products/google-ar-vr/introducing-next-generation-jump/">VR</a>, <a href="https://ai.googleblog.com/2017/10/portrait-mode-on-pixel-2-and-pixel-2-xl.html">Portrait Mode</a>, <a href="https://ai.googleblog.com/2020/12/portrait-light-enhancing-portrait.html">Portrait Light</a>, and <a href="https://blog.google/products/maps/three-maps-updates-io-2022/">Maps</a>. I did my PhD at <a href="http://www.eecs.berkeley.edu/">UC Berkeley</a>, where I was advised by <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>. I've received the <a href="https://www.thecvf.com/?page_id=413#YRA">PAMI Young Researcher Award</a>. -->
-                </p>
-                <p style="text-align:center">
-                  <a href="-">Email:zuozhi@nuaa.edu.cn</a> &nbsp;/&nbsp;
-                  <a href="data/Chenyi_CV.pdf">CV</a> &nbsp;/&nbsp;
-                  <a href="https://github.com/occlete">Github</a>
-                </p>
-              </td>
-              <td style="padding:2.5%;width:40%;max-width:40%">
-                <a href="Image/Hompage.jpg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="Image/Hompage.jpg" class="hoverZoomLink"></a>
-              </td>
-            </tr>
-          </tbody></table>
-		
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Research</h2>
-                <p>
-                  <strong>* indicate an equal contribution.</strong>
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-		
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-	
-		  
-	    <tr>
-	      <td style="padding:20px;width:25%;vertical-align:middle">
-	          <img src='Image/PL2.jpg' width=100%>
-	        </div>
-	      </td>
-	      <td style="padding:20px;width:75%;vertical-align:middle">
-		<span class="papertitle">Point Long-Term Locality-Aware Transformer for Point Cloud Video Understanding. </span>
-	        <br>
-		<span style="font-family:Oxanium;font-weight:bold;color:#eb507e">Zhi Zuo</span>,
-		<span style="font-family:Oxanium;color:#666666">Pan Gao</span>,
-		<span style="font-family:Oxanium;color:#666666">Kang You</span>,
-        <span style="font-family:Oxanium;color:#666666">Wei Xiang</span>,
-        <span style="font-family:Oxanium;color:#666666">Jie Qin</span>.
-	        <em>In ACM MM Asia Workshops</em>
-	        <br>
-	        <p>
-		Design inter-frame motion moudle and long-term locality-aware attention to achieve the better performance on 4D action recognition and 4D semantic segmentation.
-		</p>
-	        <a href="https://github.com/I2-Multimedia-Lab/PL2-Transformer">code</a>
-	        /
-	      </td>
-	    </tr>
-	
-	    <tr>
-	      <td style="padding:20px;width:25%;vertical-align:middle">
-	          <img src='Image/Uni4D2.jpg' style="width:100%;text-align:center;">
-	      </td>
-	      <td style="padding:20px;width:75%;vertical-align:middle">
-	        
-		<span class="papertitle">Disco4D: Towards Prior-Free Motion Representation Learning for Point Cloud Videos via Self-Disentangled Contrastive Pre-training </span>
-	        
-	        <br>
-		<span style="font-family:Oxanium;font-weight:bold;color:#eb507e">Zhi Zuo* </span>,
-		<span style="font-family:Oxanium;color:#666666">Chenyi Zhuang* </span>,
-        <span style="font-family:Oxanium;color:#666666">Pan Gao</span>,
-        <span style="font-family:Oxanium;color:#666666">Jie Qin</span>.
-		<span style="font-family:Oxanium;color:#666666">Hao Feng</span>,
-		<span style="font-family:Oxanium;color:#666666">Nicu Sebe</span>,
-	        <em>In International Journal of Computer Vision</em>
-	        <br>
-	        <p>
-		Design a novel self-disentangled MAE for point cloud videos that decomposes low-level feature and high-level feature with two different tokens to learn the meaningful and transferable motion representations for fine-tuning in down-stream tasks.
-	        </p>
-	        <a href="https://arxiv.org/abs/2504.04837">arXiv</a>
-	      </td>
-	    </tr>
+    // Original image paths are kept; missing files display a simple placeholder.
+    document.querySelectorAll('img').forEach(image => {
+      const fallback = () => { image.hidden = true; };
+      image.addEventListener('error', fallback);
+      if (image.complete && image.naturalWidth === 0) fallback();
+    });
 
-		  
-	    <tr>
-	      <td style="padding:20px;width:25%;vertical-align:middle">
-	          <img src='Image/Representative-1748054785888.jpg' width=100%>
-	        </div>
-	      </td>
-	      <td style="padding:20px;width:25%;vertical-align:middle">
-		<span class="papertitle">WonderVerse: Video Geometric Correction and Enhancement for Extendable 3D Scene Generation.</span>
-	        <br>
-		<span style="font-family:Oxanium;color:#666666">Hao Feng*</span>,
-		<span style="font-family:Oxanium;font-weight:bold;color:#eb507e">Zhi Zuo*</span>,
-        <span style="font-family:Oxanium;color:#666666">Jia-Hui Pan</span>,
-		<span style="font-family:Oxanium;color:#666666">Ka-Hei Hui</span>,
-		<span style="font-family:Oxanium;color:#666666">Yihua Shao</span>,
-        <span style="font-family:Oxanium;color:#666666">Qi Dou</span>,
-        <span style="font-family:Oxanium;color:#666666">Wei Xie</span>,
-	<span style="font-family:Oxanium;color:#666666">Jingyu Hu</span>,
-        <span style="font-family:Oxanium;color:#666666">Zhengzhe Liu</span>.
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    function setMenu(open) {
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close more navigation links' : 'Open more navigation links');
+      toggle.textContent = open ? '✕' : '☰';
+    }
+    toggle.addEventListener('click', () => setMenu(menu.hidden));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { setMenu(false); }));
+    document.addEventListener('click', event => {
+      if (!menu.hidden && !menu.contains(event.target) && !toggle.contains(event.target)) setMenu(false);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !menu.hidden) { setMenu(false); toggle.focus(); }
+    });
+    window.matchMedia('(max-width: 950px)').addEventListener('change', () => setMenu(false));
 
-	        <em>In CVM'26</em>
-	        <br>
-	        <p>
-		Leverage the video generative models to generate extenable 3D scenes. 
-		</p>
-	        <a href="https://arxiv.org/abs/2503.09160">arXiv</a>
-	      </td>
-	    </tr>
-
-<tr>
-	      <td style="padding:20px;width:25%;vertical-align:middle">
-	          <img src='Image/simba.png' width=100%>
-	        </div>
-	      </td>
-	      <td style="padding:20px;width:45%;vertical-align:middle">
-		<span class="papertitle">Simba: Towards High-Fidelity and Geometrically-Consistent Point Cloud Completion via Transformation Diffusion</span>
-	        <br>
-		<span style="font-family:Oxanium;color:#666666">Lirui Zhang*</span>,
-		<span style="font-family:Oxanium;color:#666666">Zhengkai Zhao*</span>,
-		<span style="font-family:Oxanium;font-weight:bold;color:#eb507e">Zhi Zuo</span>,
-        	<span style="font-family:Oxanium;color:#666666">Pan Gao</span>,
-		<span style="font-family:Oxanium;color:#666666">Jie Qin</span>,
-	        <em>In AAAI'26</em>
-	        <br>
-	        <p>
-		Point Cloud Completion via transformation diffusion. 
-		</p>
-	      </td>
-	    </tr>
-
-		
-	
-	<tr>
-	      <td style="padding:20px;width:25%;vertical-align:middle">
-	          <img src='Image/MVP.png' width=100%>
-	        </div>
-	      </td>
-	      <td style="padding:20px;width:45%;vertical-align:middle">
-		<span class="papertitle">MvP: Learning Motion Prior for Diffusion-Based 3D Human Pose Estimation.</span>
-	        <br>
-		<span style="font-family:Oxanium;color:#666666">Bing Han</span>,
-		<span style="font-family:Oxanium;color:#666666">Chenyi Zhuang</span>,
-		<span style="font-family:Oxanium;font-weight:bold;color:#eb507e">Zhi Zuo</span>,
-        	<span style="font-family:Oxanium;color:#666666">Pan Gao</span>,
-		<span style="font-family:Oxanium;color:#666666">Nicu Sebe</span>,
-	        <em>Under Review</em>
-	        <br>
-	        <p>
-		Leverage the diffusion models to estimate 3D human pose from 2D images. 
-		</p>
-	      </td>
-	    </tr>
-
-		
-	    
-
-			  
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>What's More?</h2>
-                <p>
-                <strong>"A believing heart is a magic"</strong> and <strong>"Just Do It"</strong> </p>
-		</p>
-              </td>
-            </tr>
-          </tbody></table>
-		
-            
-          </tbody></table>
-		
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:center;font-size:small;">
-                Last updated: Apirl 8, 2025
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      	</tr>
-    </table>
-  </body>
+    const sections = [...document.querySelectorAll('main > section')];
+    const links = [...document.querySelectorAll('.nav-link')];
+    let pending = false;
+    function markSection() {
+      let current = sections[0].id;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= 150) current = section.id;
+      }
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3) current = sections.at(-1).id;
+      links.forEach(link => {
+        if (link.hash === '#' + current) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      pending = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!pending) { pending = true; requestAnimationFrame(markSection); }
+    }, { passive: true });
+    window.addEventListener('resize', markSection);
+    markSection();
+  </script>
+</body>
 </html>

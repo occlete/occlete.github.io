@@ -23,17 +23,17 @@
     .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
     .skip-link { position: fixed; top: -80px; left: 12px; padding: 8px 14px; z-index: 3000; background: #fff; }
     .skip-link:focus { top: 7px; }
-    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #F5F5F5; color: #333; height: 54px; display: flex; align-items: center; border-bottom: 1px solid #ccc; font-size: 1.05em; justify-content: center; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #F5F5F5; color: #333; height: 54px; display: flex; align-items: center; border-bottom: 1px solid #dde1e5; font-size: 1.05em; justify-content: center; }
     .nav-list { display: flex; align-items: center; gap: 18px; }
-    .nav-link { text-decoration: none; color: #444; padding: 3px 16px; border-radius: 5px; white-space: nowrap; }
-    .nav-link[aria-current="location"], .nav-link:hover { background: #d8d8d8; color: #000; }
+    .nav-link { text-decoration: none; color: #444; padding: 5px 16px; border-radius: 6px; white-space: nowrap; }
+    .nav-link[aria-current="location"], .nav-link:hover { background: #e5e8eb; color: #262d34; }
     .menu-toggle { display: none; background: none; color: #333; font-size: 1.65rem; line-height: 1; border: none; padding: 7px; width: 42px; height: 42px; margin-left: auto; }
     .mobile-menu { position: fixed; top: 62px; right: 10px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; min-width: 180px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.2); padding: 12px 16px; border-radius: 10px; }
     .mobile-menu a { padding: 8px; color: #333; text-decoration: none; border-radius: 6px; }
     .mobile-menu a:hover { background: #f0f0f0; }
     .container { max-width: 1400px; margin: 54px auto 0; position: relative; }
     .side-profile { position: fixed; left: calc(50% - 700px); top: 54px; width: 272px; height: calc(100vh - 54px); background: #F5F5F5; box-shadow: 2px 0 6px rgba(0,0,0,.05); padding: 24px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 999; overflow-y: auto; }
-    .avatar { position: relative; width: 100px; height: 100px; border-radius: 50%; overflow: hidden; flex-shrink: 0; margin-bottom: 10px; background: #e4e4e4; }
+    .avatar { position: relative; width: 100px; height: 100px; border-radius: 50%; overflow: hidden; flex-shrink: 0; margin-bottom: 14px; background: #e4e4e4; box-shadow: 0 0 0 3px #fff, 0 0 0 4px #e0e4e8; }
     .avatar-fallback { position: absolute; inset: 0; display: grid; place-items: center; color: #777; font-size: 30px; }
     .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #eee; }
     .side-profile h2 { font-size: 1.1rem; margin: 6px 0; color: #222; }
@@ -42,39 +42,40 @@
     .profile-icon-links a { display: inline-flex; align-items: center; gap: 7px; font-size: 1rem; color: #444; text-decoration: none; }
     .profile-icon-links a:hover { color: #1DA98C; }
     .main-content { margin-left: 272px; padding: 48px 64px 24px; background: #F5F5F5; min-height: calc(100vh - 54px); }
-    section { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.03); padding: 10px 48px 22px; margin-bottom: 10px; }
+    section { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; box-shadow: 0 1px 4px rgba(30,45,60,.025); padding: 12px 48px 26px; margin-bottom: 16px; }
     .section-title { border-left: 4px solid #666; padding-left: 14px; color: #333; margin: 20px 0 24px; font-size: 1.6rem; line-height: 1.35; font-weight: 700; }
     section p { margin: 0 0 16px; }
     section p:last-child { margin-bottom: 0; }
     .news-list { padding-left: 22px; margin: 0 0 3px; }
     .news-list li { padding-left: 2px; }
     .news-label { color: #eb507e; font-weight: 600; }
-    .contribution-note { margin: 0; }
+    .contribution-note { margin: 0; color: #616971; font-size: .9rem; }
     .publication-legend { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 12px 0 0; }
     .publication-legend .tag { font-size: .85rem; margin: 0; }
     .pub-year-group { margin-top: 30px; }
-    .pub-year { display: flex; align-items: center; gap: 16px; color: #555; font-size: 1.25rem; line-height: 1.5; margin: 0; font-weight: 600; }
-    .pub-year::after { content: ''; height: 1px; flex: 1; background: #ddd; }
+    .pub-year { display: flex; align-items: center; gap: 16px; color: #48515a; font-size: 1.25rem; line-height: 1.5; margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .pub-year::after { content: ''; height: 1px; flex: 1; background: #e3e7eb; }
     .pub-year-group .pub-item:first-child { margin-top: 18px; }
     .pub-list { list-style: none; padding: 0; margin: 0; }
-    .pub-item { display: flex; gap: 30px; margin-top: 28px; background: #f7f8f9; border-radius: 12px; box-shadow: 0 1px 6px #ccc4; padding: 24px; align-items: flex-start; }
-    .pub-img-box { width: 200px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid #ccc; border-radius: 10px; position: relative; overflow: hidden; }
+    .pub-item { display: flex; gap: 30px; margin-top: 22px; background: #f7f8f9; border: 1px solid #e6e9ed; border-radius: 12px; box-shadow: 0 1px 3px rgba(30,45,60,.025); padding: 24px; align-items: flex-start; }
+    .pub-img-box { width: 200px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid #dce1e6; border-radius: 10px; position: relative; overflow: hidden; }
     .pub-img-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; border-radius: 6px; background: #fff; }
     .image-fallback { color: #666; font-size: .95rem; padding: 12px; text-align: center; }
     .pub-info { flex: 1; min-width: 0; }
     .pub-info h4 { font-size: 1.125rem; font-weight: 700; margin: 0; line-height: 1.5; overflow-wrap: anywhere; }
     .tags { margin: 10px 0; }
-    .tag { color: #333; padding: 3px 10px; border: 1px solid transparent; border-radius: 6px; margin-right: 8px; display: inline-block; font-size: .95rem; }
+    .tag { color: #333; padding: 3px 10px; border: 1px solid transparent; border-radius: 6px; margin-right: 8px; display: inline-block; font-size: .95rem; max-width: 100%; overflow-wrap: anywhere; }
     .tag-conference { background: #73c5b4; }
     .tag-journal { background: #75c4f5; }
     .tag-review { background: #e5e7eb; color: #4b5563; }
     .tag-unconfirmed { background: #fff; border-color: #ccc; color: #555; }
     .pub-meta, .authors { font-size: 1rem; }
-    .pub-meta .authors { margin: 0 0 8px; }
-    .pub-description { margin: 0 0 8px; line-height: 1.6; }
+    .pub-meta .authors { margin: 0 0 10px; color: #555e67; }
+    .authors strong { color: #333; }
+    .pub-description { margin: 0 0 8px; line-height: 1.7; color: #606871; }
     .pub-links { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 10px; }
-    .btn { background: #00AB37; color: #fff; padding: 2px 12px; border-radius: 5px; text-decoration: none; font-size: .93rem; display: inline-block; }
-    .btn:hover { background: #008d2d; color: #fff; }
+    .btn { background: #078536; color: #fff; padding: 4px 13px; border-radius: 6px; text-decoration: none; font-size: .9rem; font-weight: 600; line-height: 1.5; display: inline-flex; align-items: center; justify-content: center; min-height: 32px; }
+    .btn:hover { background: #066c2c; color: #fff; }
     .edu-list { list-style: none; padding: 0; margin: 0; }
     .edu-item { display: flex; gap: 12px; align-items: flex-start; }
     .edu-icon { margin-top: 3px; color: #666; }
@@ -190,8 +191,8 @@
         <h2 class="section-title" id="publication-title">Publications</h2>
         <p class="contribution-note">* denotes equal contribution.</p>
         <div class="publication-legend" role="group" aria-label="Publication types">
-          <span class="tag tag-conference">Conference / Workshop</span>
-          <span class="tag tag-journal">Journal</span>
+          <span class="tag tag-conference">Conference Paper</span>
+          <span class="tag tag-journal">Journal Paper</span>
           <span class="tag tag-review">Under Review</span>
         </div>
         
@@ -200,12 +201,27 @@
           <ul class="pub-list">
           <li class="pub-item">
             <div class="pub-img-box">
+              <span class="image-fallback" aria-hidden="true">Disco4D</span>
+              <img src="Image/Uni4D2.jpg" alt="Disco4D research overview" width="400" height="240" loading="lazy">
+            </div>
+            <article class="pub-info" aria-labelledby="paper-1">
+              <h4 id="paper-1">Disco4D: Towards Prior-Free Motion Representation Learning for Point Cloud Videos via Self-Disentangled Contrastive Pre-training</h4>
+              <div class="tags"><span class="tag tag-journal" title="International Journal of Computer Vision" aria-label="Journal: International Journal of Computer Vision (IJCV) 2026">International Journal of Computer Vision (IJCV) 2026</span></div>
+              <div class="pub-meta">
+                <p class="authors"><strong>Zhi Zuo*</strong>, Chenyi Zhuang*, Pan Gao, Jie Qin, Hao Feng, Nicu Sebe</p>
+                <p class="pub-description">A self-disentangled masked autoencoder that separates low- and high-level features using two token types to learn transferable motion representations for point cloud videos.</p>
+                <div class="pub-links"><a class="btn" href="https://arxiv.org/abs/2504.04837" target="_blank" rel="noopener noreferrer" aria-label="arXiv for Disco4D: Towards Prior-Free Motion Representation Learning for Point Cloud Videos via Self-Disentangled Contrastive Pre-training">arXiv</a></div>
+              </div>
+            </article>
+          </li>
+          <li class="pub-item">
+            <div class="pub-img-box">
               <span class="image-fallback" aria-hidden="true">WonderVerse</span>
               <img src="Image/Representative-1748054785888.jpg" alt="WonderVerse research overview" width="400" height="240" loading="lazy">
             </div>
-            <article class="pub-info" aria-labelledby="paper-3">
-              <h4 id="paper-3">WonderVerse: Video Geometric Correction and Enhancement for Extendable 3D Scene Generation</h4>
-              <div class="tags"><span class="tag tag-unconfirmed" aria-label="Venue: CVM 2026">CVM 2026</span></div>
+            <article class="pub-info" aria-labelledby="paper-2">
+              <h4 id="paper-2">WonderVerse: Video Geometric Correction and Enhancement for Extendable 3D Scene Generation</h4>
+              <div class="tags"><span class="tag tag-conference" title="CVM 2026" aria-label="Conference: CVM 2026">CVM 2026</span></div>
               <div class="pub-meta">
                 <p class="authors">Hao Feng*, <strong>Zhi Zuo*</strong>, Jia-Hui Pan, Ka-Hei Hui, Yihua Shao, Qi Dou, Wei Xie, Jingyu Hu, Zhengzhe Liu</p>
                 <p class="pub-description">Video generative models for extendable 3D scene generation.</p>
@@ -218,9 +234,9 @@
               <span class="image-fallback" aria-hidden="true">Simba</span>
               <img src="Image/simba.png" alt="Simba research overview" width="400" height="240" loading="lazy">
             </div>
-            <article class="pub-info" aria-labelledby="paper-4">
-              <h4 id="paper-4">Simba: Towards High-Fidelity and Geometrically-Consistent Point Cloud Completion via Transformation Diffusion</h4>
-              <div class="tags"><span class="tag tag-conference" aria-label="Conference: AAAI 2026">AAAI 2026</span></div>
+            <article class="pub-info" aria-labelledby="paper-3">
+              <h4 id="paper-3">Simba: Towards High-Fidelity and Geometrically-Consistent Point Cloud Completion via Transformation Diffusion</h4>
+              <div class="tags"><span class="tag tag-conference" title="AAAI 2026" aria-label="Conference: AAAI 2026">AAAI 2026</span></div>
               <div class="pub-meta">
                 <p class="authors">Lirui Zhang*, Zhengkai Zhao*, <strong>Zhi Zuo</strong>, Pan Gao, Jie Qin</p>
                 <p class="pub-description">Transformation diffusion for high-fidelity, geometrically consistent point cloud completion.</p>
@@ -230,36 +246,21 @@
           </li>
           </ul>
         </div>
-        <div class="pub-year-group" role="group" aria-labelledby="publications-undated">
-          <h3 class="pub-year" id="publications-undated">Year to be confirmed</h3>
+        <div class="pub-year-group" role="group" aria-labelledby="publications-2025">
+          <h3 class="pub-year" id="publications-2025">2025</h3>
           <ul class="pub-list">
           <li class="pub-item">
             <div class="pub-img-box">
               <span class="image-fallback" aria-hidden="true">PL²</span>
               <img src="Image/PL2.jpg" alt="PL² research overview" width="400" height="240" loading="lazy">
             </div>
-            <article class="pub-info" aria-labelledby="paper-1">
-              <h4 id="paper-1">Point Long-Term Locality-Aware Transformer for Point Cloud Video Understanding</h4>
-              <div class="tags"><span class="tag tag-conference" aria-label="Workshop: ACM MM Asia Workshops">ACM MM Asia Workshops</span></div>
+            <article class="pub-info" aria-labelledby="paper-4">
+              <h4 id="paper-4">Point Long-Term Locality-Aware Transformer for Point Cloud Video Understanding</h4>
+              <div class="tags"><span class="tag tag-conference" title="ACM MM Asia Workshops" aria-label="Workshop: ACM MM Asia 2025">ACM MM Asia 2025</span></div>
               <div class="pub-meta">
                 <p class="authors"><strong>Zhi Zuo</strong>, Pan Gao, Kang You, Wei Xiang, Jie Qin</p>
                 <p class="pub-description">An inter-frame motion module and long-term locality-aware attention for 4D action recognition and semantic segmentation.</p>
                 <div class="pub-links"><a class="btn" href="https://github.com/I2-Multimedia-Lab/PL2-Transformer" target="_blank" rel="noopener noreferrer" aria-label="Code for Point Long-Term Locality-Aware Transformer for Point Cloud Video Understanding">GitHub</a></div>
-              </div>
-            </article>
-          </li>
-          <li class="pub-item">
-            <div class="pub-img-box">
-              <span class="image-fallback" aria-hidden="true">Disco4D</span>
-              <img src="Image/Uni4D2.jpg" alt="Disco4D research overview" width="400" height="240" loading="lazy">
-            </div>
-            <article class="pub-info" aria-labelledby="paper-2">
-              <h4 id="paper-2">Disco4D: Towards Prior-Free Motion Representation Learning for Point Cloud Videos via Self-Disentangled Contrastive Pre-training</h4>
-              <div class="tags"><span class="tag tag-journal" aria-label="Journal: International Journal of Computer Vision">International Journal of Computer Vision</span></div>
-              <div class="pub-meta">
-                <p class="authors"><strong>Zhi Zuo*</strong>, Chenyi Zhuang*, Pan Gao, Jie Qin, Hao Feng, Nicu Sebe</p>
-                <p class="pub-description">A self-disentangled masked autoencoder that separates low- and high-level features using two token types to learn transferable motion representations for point cloud videos.</p>
-                <div class="pub-links"><a class="btn" href="https://arxiv.org/abs/2504.04837" target="_blank" rel="noopener noreferrer" aria-label="arXiv for Disco4D: Towards Prior-Free Motion Representation Learning for Point Cloud Videos via Self-Disentangled Contrastive Pre-training">arXiv</a></div>
               </div>
             </article>
           </li>
@@ -275,7 +276,7 @@
             </div>
             <article class="pub-info" aria-labelledby="paper-5">
               <h4 id="paper-5">MvP: Learning Motion Prior for Diffusion-Based 3D Human Pose Estimation</h4>
-              <div class="tags"><span class="tag tag-review" aria-label="Under review: Under Review">Under Review</span></div>
+              <div class="tags"><span class="tag tag-review" title="Under review" aria-label="Under review: Under Review">Under Review</span></div>
               <div class="pub-meta">
                 <p class="authors">Bing Han, Chenyi Zhuang, <strong>Zhi Zuo</strong>, Pan Gao, Nicu Sebe</p>
                 <p class="pub-description">Diffusion models for estimating 3D human poses from 2D images.</p>
